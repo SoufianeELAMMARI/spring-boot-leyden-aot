@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: sample-spring-bookstore
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=leyden
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+  sql:
+    init:
+      mode: always
+      # schema-locations: classpath:script/schema.sql
+      #data-locations: classpath:script/data.sql
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework: WARN
